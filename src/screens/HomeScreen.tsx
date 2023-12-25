@@ -89,7 +89,7 @@ const HomeScreen = () => {
                   style={styles.categoryScrollViewItem}
                   onPress={() => {
                     setCategoryIndex({index:index, category:categories[index]});
-                    setSortedCoffee(getCoffeeList(categories[index], CoffeeList));
+                    setSortedCoffee([...getCoffeeList(categories[index], CoffeeList)]);
                   }}>
                   <Text 
                     style={[styles.categoryText, categoryIndex.index == index? {color: COLORS.primaryOrangeHex}: {}]}>
