@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
         fontFamily: FONTFAMILY.poppins_semibold,
         fontSize: FONTSIZE.size_20,
         color: COLORS.primaryWhiteHex
-
     }
 })
 export default HeaderBar

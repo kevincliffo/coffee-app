@@ -47,8 +47,10 @@ const HomeScreen = () => {
   return (
     <View style={styles.screenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex}/>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollViewFlex} />
-      <HeaderBar title='Home Screen'/>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollViewFlex}>
+        {/* App Header */}
+        <HeaderBar title='Home Screen'/>
+      </ScrollView>
     </View>
   )
 }
