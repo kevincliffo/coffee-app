@@ -161,11 +161,15 @@ const HomeScreen = ({navigation} :any) => {
             }
             showsHorizontalScrollIndicator={false}
             data={sortedCoffee}
-            contentContainerStyle={[styles.flatListContainer, {marginBottom:tabBarHeight}]}
+            contentContainerStyle={styles.flatListContainer}
             keyExtractor={item => item.id}
             renderItem={({item}) =>{
               return <TouchableOpacity onPress={() => {
-                navigation.push('Details')
+                navigation.push('Details', {
+                  index:item.index, 
+                  id:item.id, 
+                  type:item.type
+                });
               }}>
                 <CoffeeCard 
                   name={item.name} 
@@ -188,12 +192,16 @@ const HomeScreen = ({navigation} :any) => {
             horizontal
             showsHorizontalScrollIndicator={false}
             data={BeanList}
-            contentContainerStyle={[styles.flatListContainer, {marginBottom:tabBarHeight}]}
+            contentContainerStyle={styles.flatListContainer}
             keyExtractor={item => item.id}
             renderItem={({item}) =>{
               return <TouchableOpacity onPress={() => {
-                navigation.push('Details')
-                }}>
+                navigation.push('Details', {
+                  index:item.index, 
+                  id:item.id, 
+                  type:item.type
+                });
+              }}>
                 <CoffeeCard 
                   name={item.name} 
                   id={item.id}
