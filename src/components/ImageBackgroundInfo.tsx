@@ -8,7 +8,7 @@ interface ImageBackgroundInfoProps {
     imageLink_portrait:ImageProps;
     type:string;
     id:string;
-    favorite:boolean;
+    favourite:boolean;
     name:string;
     special_ingredient:string;
     ingredients:string;
@@ -16,7 +16,7 @@ interface ImageBackgroundInfoProps {
     ratings_count:string;
     roasted:string;
     Backhandler?:any;
-    ToggleFavorite:any;
+    ToggleFavourite:any;
 };
 
 const ImageBackgroundInfo:React.FC<ImageBackgroundInfoProps> = ({
@@ -24,7 +24,7 @@ const ImageBackgroundInfo:React.FC<ImageBackgroundInfoProps> = ({
     imageLink_portrait,
     type,
     id,
-    favorite,
+    favourite,
     name,
     special_ingredient,
     ingredients,
@@ -32,7 +32,7 @@ const ImageBackgroundInfo:React.FC<ImageBackgroundInfoProps> = ({
     ratings_count,
     roasted,
     Backhandler,
-    ToggleFavorite}) => {
+    ToggleFavourite}) => {
   return (
     <View>
       <ImageBackground 
@@ -48,20 +48,28 @@ const ImageBackgroundInfo:React.FC<ImageBackgroundInfoProps> = ({
                             size={FONTSIZE.size_16}
                         /> 
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity 
+                        onPress={() => {
+                            ToggleFavourite(favourite, type, id);
+                        }}
+                    >
                         <GradientBGIcon 
                             name='like' 
-                            color={favorite ? COLORS.primaryRedHex: COLORS.primaryLightGreyHex}
+                            color={favourite ? COLORS.primaryRedHex: COLORS.primaryLightGreyHex}
                             size={FONTSIZE.size_16}
                         /> 
                     </TouchableOpacity>
                 </View>
             ): (
                 <View style={styles.imageHeaderBarContainerWithoutBack}>
-                    <TouchableOpacity>
+                    <TouchableOpacity 
+                        onPress={() => {
+                            ToggleFavourite(favourite, type, id);
+                        }}
+                    >
                         <GradientBGIcon 
                             name='like' 
-                            color={favorite ? COLORS.primaryRedHex: COLORS.primaryLightGreyHex}
+                            color={favourite ? COLORS.primaryRedHex: COLORS.primaryLightGreyHex}
                             size={FONTSIZE.size_16}
                         /> 
                     </TouchableOpacity>
