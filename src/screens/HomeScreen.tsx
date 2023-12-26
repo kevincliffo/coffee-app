@@ -1,4 +1,4 @@
-import { FlatList, ScrollView, StatusBar, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View } from 'react-native'
+import { Dimensions, FlatList, ScrollView, StatusBar, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { useStore } from '../store/store';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
@@ -98,7 +98,10 @@ const HomeScreen = () => {
             placeholder='Find your coffee...' 
             value={searchText} 
             onChangeText={
-              text=> setSearchText(text)
+              text=> {
+                setSearchText(text);
+                searchCoffee(text);
+              }
             }
             placeholderTextColor={COLORS.primaryLightGreyHex}
             style={styles.textInputContainer}
@@ -151,6 +154,11 @@ const HomeScreen = () => {
           <FlatList 
             ref={ListRef}
             horizontal
+            ListEmptyComponent={
+              <View style={styles.emptyListContainer}>
+                <Text style={styles.categoryText}>No Coffee Available</Text>
+              </View>
+            }
             showsHorizontalScrollIndicator={false}
             data={sortedCoffee}
             contentContainerStyle={[styles.flatListContainer, {marginBottom:tabBarHeight}]}
@@ -266,6 +274,12 @@ const styles = StyleSheet.create({
     marginTop: SPACING.space_20,
     fontFamily:FONTFAMILY.poppins_medium,
     color: COLORS.secondaryLightGreyHex
+  },
+  emptyListContainer:{
+    width: Dimensions.get('window').width - SPACING.space_30 * 2,
+    alignItems:'center',
+    justifyContent:'center',
+    paddingVertical: SPACING.space_36 * 3.6
   }
 })
 export default HomeScreen
